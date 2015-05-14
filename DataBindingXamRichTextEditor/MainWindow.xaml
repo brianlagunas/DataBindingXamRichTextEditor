@@ -1,0 +1,23 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ig="http://schemas.infragistics.com/xaml" x:Class="DataBindingXamRichTextEditor.MainWindow"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ig:HtmlDocumentAdapter x:Name="_html" Document="{Binding Document, ElementName=_rte}"
+                                RefreshTrigger="Delayed" 
+                                DelayAfterFirstEdit="00:00:02.00" 
+                                DelayAfterLastEdit="00:00:02.00"
+                                Value="{Binding HtmlText}" />
+        
+        <ig:XamRichTextEditor x:Name="_rte" Grid.Column="0" />
+        
+        <TextBlock Grid.Column="1" Text="{Binding ElementName=_html, Path=Value}"/>
+
+    </Grid>
+</Window>
